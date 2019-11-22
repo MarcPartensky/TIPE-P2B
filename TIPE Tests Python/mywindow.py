@@ -15,12 +15,21 @@ class Window:
         - fullscreen (to set fullscreen mode directly)
         - call arguments (to build the window directly on screen)."""
         self.name = name
-        self.name = name
+        self.size = size
         self.text_color = mycolors.WHITE
         self.background_color = mycolors.BLACK
         self.fullscreen = fullscreen
+        self.open = False
         if call:
             self.__call__(size)
+
+    @property
+    def w(self):
+        return self.size[0]
+
+    @property
+    def h(self):
+        return self.size[1]
 
     def buildScreen(self,size=None):
         """Set the display for the screen to
@@ -34,8 +43,13 @@ class Window:
             self.screen = pygame.display.set_mode(size,pygame.FULLSCREEN)
         else:
             self.screen = pygame.display.set_mode(size,pygame.RESIZABLE)
+        self.clear()
+        self.flip()
+        self.size = size
+        self.open = True
+        print("Fenetre ouverte.")
 
-    def __call__(self, size):
+    def __call__(self, size=None):
         """Creates apparent window."""
         pygame.init()
         self.info = pygame.display.Info() # permet de récup des dimmension de l'écran d'ordi
@@ -46,16 +60,35 @@ class Window:
         self.flip()
         self.open = True
 
-    def clear(self):
-        """Clear to the background color."""
-        self.screen.fill(self.background_color)
+    def clear(self,color=None):
+        """Clear to background color."""
+        if color is None:
+            color = self.background_color
+        self.screen.fill(color)
 
     def flip(self):
         """Flip the screen of the window."""
-        pygame.display.update()
+        pygame.display.flip()
+
+    def check(self):
+        """Update window's state depending if close buttons are pressed."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.open = False
+                return False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.open = False
+                    return False
+            if event.type == pygame.VIDEORESIZE:
+                self.screen =  pygame.display.set_mode((event.w,event.h),pygame.RESIZABLE)
+        return self.open
 
 
 if __name__=="__main__":
     import time  # This is a test
     w = Window()
     time.sleep(3)
+
+    while w.open:
+        w.check()
