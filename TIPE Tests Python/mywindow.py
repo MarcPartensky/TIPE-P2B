@@ -3,6 +3,8 @@ import pygame
 
 
 class Window:
+    draw = pygame.draw # New stuff
+
     def __init__(self,
                 name="Window",
                 size=None,
