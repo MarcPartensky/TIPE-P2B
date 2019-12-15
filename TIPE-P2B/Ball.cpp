@@ -9,7 +9,10 @@
 #include "Ball.hpp"
 
 
-Ball::Ball(float position[3], float radius) {
+
+
+
+Ball::Ball(glm::vec3 position[3], float radius) {
     mPosition[0] = position[0];
     mPosition[1] = position[1];
     mPosition[2] = position[2];
