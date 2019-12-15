@@ -7,10 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4767CD23A697B9005D3198 /* SceneOpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */; };
+		0C4767D023A69834005D3198 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4767CF23A69834005D3198 /* SDL2.framework */; };
+		0C4767D123A69834005D3198 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4767CF23A69834005D3198 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0C4767D423A6983F005D3198 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4767D323A6983F005D3198 /* OpenGL.framework */; };
 		0C68F3A62386EF29001D4C2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F3A52386EF29001D4C2F /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0C4767D223A69834005D3198 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0C4767D123A69834005D3198 /* SDL2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0C68F3A02386EF29001D4C2F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -23,6 +38,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneOpenGL.cpp; sourceTree = "<group>"; };
+		0C4767CC23A697B9005D3198 /* SceneOpenGL.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SceneOpenGL.hpp; sourceTree = "<group>"; };
+		0C4767CF23A69834005D3198 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		0C4767D323A6983F005D3198 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		0C68F3A22386EF29001D4C2F /* TIPE-P2B */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "TIPE-P2B"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C68F3A52386EF29001D4C2F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C4767D023A69834005D3198 /* SDL2.framework in Frameworks */,
+				0C4767D423A6983F005D3198 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C4767CE23A69834005D3198 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C4767D323A6983F005D3198 /* OpenGL.framework */,
+				0C4767CF23A69834005D3198 /* SDL2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0C68F3992386EF29001D4C2F = {
 			isa = PBXGroup;
 			children = (
 				0C68F3A42386EF29001D4C2F /* TIPE-P2B */,
 				0C68F3A32386EF29001D4C2F /* Products */,
+				0C4767CE23A69834005D3198 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				0C68F3A52386EF29001D4C2F /* main.cpp */,
+				0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */,
+				0C4767CC23A697B9005D3198 /* SceneOpenGL.hpp */,
 			);
 			path = "TIPE-P2B";
 			sourceTree = "<group>";
@@ -72,6 +105,7 @@
 				0C68F39E2386EF29001D4C2F /* Sources */,
 				0C68F39F2386EF29001D4C2F /* Frameworks */,
 				0C68F3A02386EF29001D4C2F /* CopyFiles */,
+				0C4767D223A69834005D3198 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C68F3A62386EF29001D4C2F /* main.cpp in Sources */,
+				0C4767CD23A697B9005D3198 /* SceneOpenGL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +211,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = /Library/Frameworks/SDL2.framework/Headers/;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -239,6 +275,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -247,6 +287,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
