@@ -9,8 +9,10 @@
 #include "Ball.hpp"
 
 
-Ball::Ball(std::vector<double> position, double radius) {
-    mPosition = position;
+Ball::Ball(float position[3], float radius) {
+    mPosition[0] = position[0];
+    mPosition[1] = position[1];
+    mPosition[2] = position[2];
     mRadius = radius;
 }
 

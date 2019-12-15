@@ -14,12 +14,12 @@
 
 class Ball {
 public:
-    Ball(double position[3], double radius);
+    Ball(float position[3], float radius);
     ~Ball();
 
 protected:
-    double mPosition[3];
-    double mRadius;
+    float mPosition[3];
+    float mRadius;
 };
 
 #endif /* Ball_hpp */
