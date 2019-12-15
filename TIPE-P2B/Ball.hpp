@@ -14,10 +14,11 @@
 
 class Ball {
 public:
-    Ball(std::vector<double> position, double radius);
+    Ball(double position[3], double radius);
     ~Ball();
+
 protected:
-    std::vector<double> mPosition;
+    double mPosition[3];
     double mRadius;
 };
 

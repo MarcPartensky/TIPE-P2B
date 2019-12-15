@@ -92,9 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				0C68F3A52386EF29001D4C2F /* main.cpp */,
-				0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */,
 				0C4767D523A69FBB005D3198 /* Ball.cpp */,
 				0C4767D623A69FBB005D3198 /* Ball.hpp */,
+				0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */,
 				0C4767CC23A697B9005D3198 /* SceneOpenGL.hpp */,
 			);
 			path = "TIPE-P2B";
