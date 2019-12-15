@@ -90,7 +90,6 @@ void SceneOpenGL::draw() {
 //    shaderBasique.charger();
 //    glUseProgram(shaderBasique.getProgramID());
     
-    
     // verticies
     float vs1[] = {0.0, 0.0,   0.5, 0.0,   0.0, 0.5,          // Triangle 1
                         -0.8, -0.8,   -0.3, -0.8,   -0.8, -0.3};   // Triangle 2
