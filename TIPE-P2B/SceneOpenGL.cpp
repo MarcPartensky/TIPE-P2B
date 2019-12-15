@@ -24,7 +24,7 @@ SceneOpenGL::~SceneOpenGL () {
 }
 
 bool SceneOpenGL::init() {
-    // Initializing SDL
+    // Initializing SDL 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
          std::cout << stderr << std::endl;
          std::cout << "Sdl couldn't be initialized." << std::endl;
