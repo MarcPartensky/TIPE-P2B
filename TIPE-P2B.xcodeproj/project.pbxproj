@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C12D47623A8D1AD00D990E1 /* SandBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C12D47423A8D1AD00D990E1 /* SandBox.cpp */; };
 		0C4767CD23A697B9005D3198 /* SceneOpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */; };
 		0C4767D023A69834005D3198 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4767CF23A69834005D3198 /* SDL2.framework */; };
 		0C4767D123A69834005D3198 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4767CF23A69834005D3198 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -41,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C12D47423A8D1AD00D990E1 /* SandBox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SandBox.cpp; sourceTree = SOURCE_ROOT; };
+		0C12D47523A8D1AD00D990E1 /* SandBox.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SandBox.hpp; sourceTree = SOURCE_ROOT; };
 		0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneOpenGL.cpp; sourceTree = "<group>"; };
 		0C4767CC23A697B9005D3198 /* SceneOpenGL.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SceneOpenGL.hpp; sourceTree = "<group>"; };
 		0C4767CF23A69834005D3198 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -5380,6 +5383,8 @@
 				0C4767D623A69FBB005D3198 /* Ball.hpp */,
 				0C4771CF23A7F71B005D3198 /* Sand.cpp */,
 				0C4771D023A7F71B005D3198 /* Sand.hpp */,
+				0C12D47423A8D1AD00D990E1 /* SandBox.cpp */,
+				0C12D47523A8D1AD00D990E1 /* SandBox.hpp */,
 				0C4771D223A7F971005D3198 /* Collider.cpp */,
 				0C4771D323A7F971005D3198 /* Collider.hpp */,
 				0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */,
@@ -5451,6 +5456,7 @@
 				0C4771D423A7F971005D3198 /* Collider.cpp in Sources */,
 				0C4767CD23A697B9005D3198 /* SceneOpenGL.cpp in Sources */,
 				0C4771D123A7F71B005D3198 /* Sand.cpp in Sources */,
+				0C12D47623A8D1AD00D990E1 /* SandBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
