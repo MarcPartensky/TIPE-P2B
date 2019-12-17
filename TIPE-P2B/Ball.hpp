@@ -14,14 +14,15 @@
 #include <glm/glm.hpp>
 
 
+
 class Ball {
 public:
-    Ball(float position[3], float radius);
+    Ball(glm::vec3 position, float radius);
     ~Ball();
 
 protected:
-    float mPosition[3];
-    float mRadius;
+    glm::vec3 position;
+    float radius;
 };
 
 #endif /* Ball_hpp */

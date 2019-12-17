@@ -12,14 +12,14 @@
 
 
 SceneOpenGL::SceneOpenGL(std::string title, int width, int height) {
-    mTitle = title;
-    mWidth = width;
-    mHeight = height;
+    SceneOpenGL::title = title;
+    SceneOpenGL::width = width;
+    SceneOpenGL::height = height;
 }
 
 SceneOpenGL::~SceneOpenGL () {
-    SDL_GL_DeleteContext(mContext);
-    SDL_DestroyWindow(mWindow);
+    SDL_GL_DeleteContext(context);
+    SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
@@ -34,10 +34,10 @@ bool SceneOpenGL::init() {
      }
 
     // Creating Window
-    mWindow = SDL_CreateWindow("main",
+    window = SDL_CreateWindow("main",
     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-    mWidth, mHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
-    if (!mWindow) {
+    width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+    if (!window) {
         std::cout << stderr << std::endl;
         std::cout << "The window couldn't be created." << std::endl;
         std::cout << SDL_GetError() << std::endl;
@@ -46,12 +46,12 @@ bool SceneOpenGL::init() {
     }
 
     // Creating context
-    mContext = SDL_GL_CreateContext(mWindow);
-    if (!mContext) {
+    context = SDL_GL_CreateContext(window);
+    if (!context) {
         std::cout << stderr << std::endl;
         std::cout << "The context couldn't be created." << std::endl;
         std::cout << SDL_GetError() << std::endl;
-        SDL_DestroyWindow(mWindow);
+        SDL_DestroyWindow(window);
         SDL_Quit();
         return false;
     }
@@ -71,13 +71,13 @@ void SceneOpenGL::main() {
 //    vector<double> position(3, 0);
 //    vector<double> rotation(3, 0);
 
-    mOpen = true;
+    open = true;
     SDL_Event ev;
-    while (mOpen) {
+    while (open) {
         while (SDL_WaitEventTimeout(&ev, 15)) {
             switch (ev.type) {
                 case SDL_QUIT:
-                    mOpen = false;
+                    open = false;
             }
         }
         show();
@@ -112,7 +112,7 @@ void SceneOpenGL::clear() {
 }
 
 void SceneOpenGL::swap() {
-    SDL_GL_SwapWindow(mWindow);
+    SDL_GL_SwapWindow(window);
 }
 
 void SceneOpenGL::show() {

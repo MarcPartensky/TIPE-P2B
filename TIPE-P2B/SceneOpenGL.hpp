@@ -41,14 +41,14 @@ public:
     
     // Attributes
 public:
-    std::string mTitle;
-    int mWidth;
-    int mHeight;
-    bool mOpen;
+    std::string title;
+    int width;
+    int height;
+    bool open;
 protected:
-    SDL_Window* mWindow;
-    SDL_GLContext mContext;
-    SDL_Event mEvent;
+    SDL_Window* window;
+    SDL_GLContext context;
+    SDL_Event event;
 };
 
 

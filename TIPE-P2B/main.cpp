@@ -26,13 +26,13 @@ int main(int argc, const char * argv[]) {
     //    vector<double> position(3, 0);
     //    vector<double> rotation(3, 0);
 
-    scene.mOpen = true;
+    scene.open = true;
     SDL_Event ev;
-    while (scene.mOpen) {
+    while (scene.open) {
         while (SDL_WaitEventTimeout(&ev, 15)) {
             switch (ev.type) {
                 case SDL_QUIT:
-                    scene.mOpen = false;
+                    scene.open = false;
             }
         }
         // scene.clear();

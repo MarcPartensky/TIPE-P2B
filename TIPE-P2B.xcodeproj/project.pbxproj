@@ -12,6 +12,8 @@
 		0C4767D123A69834005D3198 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4767CF23A69834005D3198 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0C4767D423A6983F005D3198 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4767D323A6983F005D3198 /* OpenGL.framework */; };
 		0C4767D723A69FBB005D3198 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C4767D523A69FBB005D3198 /* Ball.cpp */; };
+		0C4771D123A7F71B005D3198 /* Sand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C4771CF23A7F71B005D3198 /* Sand.cpp */; };
+		0C4771D423A7F971005D3198 /* Collider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C4771D223A7F971005D3198 /* Collider.cpp */; };
 		0C68F3A62386EF29001D4C2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F3A52386EF29001D4C2F /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -2563,6 +2565,10 @@
 		0C4771C923A6ABDE005D3198 /* rotate_normalized_axis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rotate_normalized_axis.hpp; sourceTree = "<group>"; };
 		0C4771CA23A6ABDE005D3198 /* projection.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = projection.inl; sourceTree = "<group>"; };
 		0C4771CB23A6ABDE005D3198 /* type_aligned.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type_aligned.hpp; sourceTree = "<group>"; };
+		0C4771CF23A7F71B005D3198 /* Sand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sand.cpp; sourceTree = "<group>"; };
+		0C4771D023A7F71B005D3198 /* Sand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Sand.hpp; sourceTree = "<group>"; };
+		0C4771D223A7F971005D3198 /* Collider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Collider.cpp; sourceTree = "<group>"; };
+		0C4771D323A7F971005D3198 /* Collider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Collider.hpp; sourceTree = "<group>"; };
 		0C68F3A22386EF29001D4C2F /* TIPE-P2B */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "TIPE-P2B"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C68F3A52386EF29001D4C2F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -5372,6 +5378,10 @@
 				0C68F3A52386EF29001D4C2F /* main.cpp */,
 				0C4767D523A69FBB005D3198 /* Ball.cpp */,
 				0C4767D623A69FBB005D3198 /* Ball.hpp */,
+				0C4771CF23A7F71B005D3198 /* Sand.cpp */,
+				0C4771D023A7F71B005D3198 /* Sand.hpp */,
+				0C4771D223A7F971005D3198 /* Collider.cpp */,
+				0C4771D323A7F971005D3198 /* Collider.hpp */,
 				0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */,
 				0C4767CC23A697B9005D3198 /* SceneOpenGL.hpp */,
 			);
@@ -5438,7 +5448,9 @@
 			files = (
 				0C4767D723A69FBB005D3198 /* Ball.cpp in Sources */,
 				0C68F3A62386EF29001D4C2F /* main.cpp in Sources */,
+				0C4771D423A7F971005D3198 /* Collider.cpp in Sources */,
 				0C4767CD23A697B9005D3198 /* SceneOpenGL.cpp in Sources */,
+				0C4771D123A7F71B005D3198 /* Sand.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
