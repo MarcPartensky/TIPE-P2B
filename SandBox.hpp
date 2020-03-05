@@ -19,7 +19,7 @@ public:
     SandBox();
     ~SandBox();
 protected:
-//    int n;
+    const int n;
     glm::mat<3, 3*n, float> tensor;
     
 };

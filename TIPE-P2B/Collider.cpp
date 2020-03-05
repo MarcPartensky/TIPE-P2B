@@ -7,3 +7,15 @@
 //
 
 #include "Collider.hpp"
+
+Collider::Collider(SandBox sandbox) {
+    Collider::sandbox = sandbox;
+}
+
+
+Collider::~Collider() {}
+
+
+Collider::update() {
+    
+}

@@ -11,14 +11,15 @@
 
 #include <stdio.h>
 #include <glm/glm.hpp>
+#include "SandBox.hpp"
 
 class Collider {
+/* The collider is charged of dealing with the collisions of the sand in the sand box.*/
 public:
-    Collider();
+    Collider(SandBox sandbox);
     ~Collider();
 protected:
-    glm::mat<length, <#length_t R#>, <#typename T#>>
-    
+    SandBox sandbox;
 };
 
 #endif /* Collider_hpp */

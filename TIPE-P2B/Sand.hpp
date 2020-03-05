@@ -14,12 +14,13 @@
 
 class Sand {
 public:
+    static Sand createRandom();
     Sand(glm::mat3 tensor, float radius, float mass);
     ~Sand();
-    glm::vec3 getPosition();
-    glm::vec3 getVelocity();
-    glm::vec3 getAcceleration();
-    void update(float dt);
+    glm::vec3 getPosition(); // Position vector extracted from the tensor
+    glm::vec3 getVelocity(); // Velocity vector extracted from the tensor
+    glm::vec3 getAcceleration(); // Acceleration vector extracted from the tensor
+    void update(float dt); // Update the tensor
     glm::mat3 getUpdateMatrix(float dt);
 protected:
     glm::mat3 tensor;
@@ -28,3 +29,4 @@ protected:
 };
 
 #endif /* Sand_hpp */
+
