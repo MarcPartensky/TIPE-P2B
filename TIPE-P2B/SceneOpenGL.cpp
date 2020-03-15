@@ -12,9 +12,9 @@
 
 
 SceneOpenGL::SceneOpenGL(std::string title, int width, int height) {
-    SceneOpenGL::title = title;
-    SceneOpenGL::width = width;
-    SceneOpenGL::height = height;
+    this->title = title;
+    this->width = width;
+    this->height = height;
 }
 
 SceneOpenGL::~SceneOpenGL () {
@@ -63,6 +63,9 @@ bool SceneOpenGL::init() {
     // Double Buffer
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    
+    glTranslated(0, 0, -4);
+    
     return true;
 }
 
@@ -104,6 +107,9 @@ void SceneOpenGL::draw() {
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+    
+//    glutSolidSphere(5.0, 10, 10);
+    glutWireSphere(5, 10, 10);
 
 }
 

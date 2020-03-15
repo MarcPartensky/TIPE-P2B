@@ -52,10 +52,10 @@ void Ball::compute() {
             normals.push_back(ny);
             normals.push_back(nz);
             
-            s = (float)j / sectorCount;
-            t = (float)i / stackCount;
-            texCoords.push_back(s);
-            texCoords.push_back(t);
+//            s = (float)j / sectorCount;
+//            t = (float)i / stackCount;
+//            texCoords.push_back(s);
+//            texCoords.push_back(t);
         }
     }
     
@@ -89,7 +89,7 @@ void Ball::compute() {
 
 }
 
-Ball::show(SceneOpenGL scene) {
+void Ball::show(SceneOpenGL scene) {
 
 }
 

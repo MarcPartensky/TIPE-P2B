@@ -20,7 +20,7 @@ public:
     ~SandBox();
 protected:
     const int n;
-    glm::mat<3, 3*n, float> tensor;
+    glm::mat<3, 3, float> tensor;
     
 };
 

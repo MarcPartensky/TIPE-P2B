@@ -20,11 +20,11 @@
 
 #include <stdio.h>
 #include <string>
-#include <SDL.h>
 
-
+#include "SDL.h"
+// #include <SDL2/SDL.h>
+// #include "frameworks/SDL2.framework/Versions/Current/Headers/SDL.h"
 //#include "Shader.h" // Shaders
-
 
 class SceneOpenGL
 {

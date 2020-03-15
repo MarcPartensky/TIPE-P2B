@@ -8,14 +8,16 @@
 
 #include "Collider.hpp"
 
-Collider::Collider(SandBox sandbox) {
-    Collider::sandbox = sandbox;
-}
+//Collider::Collider(SandBox sandbox) {
+//    this->sandbox = sandbox;
+//}
+
+Collider::Collider() {}
 
 
 Collider::~Collider() {}
 
 
-Collider::update() {
+void Collider::update() {
     
 }

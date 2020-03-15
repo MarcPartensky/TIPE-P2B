@@ -16,10 +16,12 @@
 class Collider {
 /* The collider is charged of dealing with the collisions of the sand in the sand box.*/
 public:
-    Collider(SandBox sandbox);
+//    Collider(SandBox sandbox);
+    Collider();
     ~Collider();
+    void update();
 protected:
-    SandBox sandbox;
+//    SandBox sandbox;
 };
 
 #endif /* Collider_hpp */

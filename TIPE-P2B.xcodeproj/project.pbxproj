@@ -16,6 +16,8 @@
 		0C4771D123A7F71B005D3198 /* Sand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C4771CF23A7F71B005D3198 /* Sand.cpp */; };
 		0C4771D423A7F971005D3198 /* Collider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C4771D223A7F971005D3198 /* Collider.cpp */; };
 		0C68F3A62386EF29001D4C2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F3A52386EF29001D4C2F /* main.cpp */; };
+		0CE3EB6124123138000B7DE9 /* sphere demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3EB6024123138000B7DE9 /* sphere demo.cpp */; };
+		0CE3EB63241235DD000B7DE9 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE3EB62241235DD000B7DE9 /* GLUT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -2574,6 +2576,8 @@
 		0C4771D323A7F971005D3198 /* Collider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Collider.hpp; sourceTree = "<group>"; };
 		0C68F3A22386EF29001D4C2F /* TIPE-P2B */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "TIPE-P2B"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C68F3A52386EF29001D4C2F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0CE3EB6024123138000B7DE9 /* sphere demo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "sphere demo.cpp"; sourceTree = "<group>"; };
+		0CE3EB62241235DD000B7DE9 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2581,6 +2585,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CE3EB63241235DD000B7DE9 /* GLUT.framework in Frameworks */,
 				0C4767D023A69834005D3198 /* SDL2.framework in Frameworks */,
 				0C4767D423A6983F005D3198 /* OpenGL.framework in Frameworks */,
 			);
@@ -2592,6 +2597,7 @@
 		0C4767CE23A69834005D3198 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CE3EB62241235DD000B7DE9 /* GLUT.framework */,
 				0C4767D823A6ABAD005D3198 /* glm */,
 				0C47704F23A6ABDD005D3198 /* glm */,
 				0C4767D323A6983F005D3198 /* OpenGL.framework */,
@@ -5389,6 +5395,7 @@
 				0C4771D323A7F971005D3198 /* Collider.hpp */,
 				0C4767CB23A697B9005D3198 /* SceneOpenGL.cpp */,
 				0C4767CC23A697B9005D3198 /* SceneOpenGL.hpp */,
+				0CE3EB6024123138000B7DE9 /* sphere demo.cpp */,
 			);
 			path = "TIPE-P2B";
 			sourceTree = "<group>";
@@ -5454,6 +5461,7 @@
 				0C4767D723A69FBB005D3198 /* Ball.cpp in Sources */,
 				0C68F3A62386EF29001D4C2F /* main.cpp in Sources */,
 				0C4771D423A7F971005D3198 /* Collider.cpp in Sources */,
+				0CE3EB6124123138000B7DE9 /* sphere demo.cpp in Sources */,
 				0C4767CD23A697B9005D3198 /* SceneOpenGL.cpp in Sources */,
 				0C4771D123A7F71B005D3198 /* Sand.cpp in Sources */,
 				0C12D47623A8D1AD00D990E1 /* SandBox.cpp in Sources */,
