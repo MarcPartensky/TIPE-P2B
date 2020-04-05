@@ -10,18 +10,16 @@
 #define SandBox_hpp
 
 #include <stdio.h>
-#include <glm/glm.hpp>
+#include "Sand.hpp"
 
-const int n = 1000;
 
 class SandBox {
 public:
-    SandBox();
+    SandBox(Sand array[]);
     ~SandBox();
 protected:
-    const int n;
-    glm::mat<3, 3, float> tensor;
-    
+    Sand array[];
+//    std::vector<Sand> array;
 };
 
 #endif /* SandBox_hpp */

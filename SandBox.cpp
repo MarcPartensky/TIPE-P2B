@@ -7,3 +7,12 @@
 //
 
 #include "SandBox.hpp"
+
+SandBox::SandBox(Sand[] array) {
+    this->array = array;
+}
+
+SandBox::~Sandbox() {
+    t
+}
+

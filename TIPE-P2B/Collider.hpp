@@ -10,7 +10,6 @@
 #define Collider_hpp
 
 #include <stdio.h>
-#include <glm/glm.hpp>
 #include "SandBox.hpp"
 
 class Collider {

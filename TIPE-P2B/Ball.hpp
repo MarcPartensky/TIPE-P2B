@@ -11,7 +11,6 @@
 
 #include <stdio.h>
 #include <vector>
-#include <glm/glm.hpp>
 #include "SceneOpenGL.hpp"
 
 #define _USE_MATH_DEFINES

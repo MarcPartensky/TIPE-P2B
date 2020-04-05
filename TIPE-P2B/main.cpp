@@ -6,6 +6,8 @@
 //  Copyright © 2019 Marc Partensky. All rights reserved.
 //
 
+#define GL_SILENCE_DEPRECATION
+
 // Maybe useful who knows
 //#include <stdio.h>
 //#include <stdbool.h>
@@ -67,12 +69,20 @@
 
 #include <GLUT/glut.h>
 #include <SDL.h>
-//#include <GLUT/GLUT.h>
+#include "glm/glm.hpp"
+
+const int n = 1000; // number of sand grains
+
+#include "SimpleBall.hpp"
+#include "Sand.hpp"
+#include "SandBox.hpp"
+
+
+
 
 
 GLfloat xRotated, yRotated, zRotated;
 GLdouble radius=1;
-
 
 void display(void);
 void reshape(int x, int y);
@@ -81,7 +91,8 @@ void reshape(int x, int y);
 int main (int argc, char **argv)
 {
     glutInit(&argc, argv);
-    glutInitWindowSize(350,350);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+    glutInitWindowSize(2560,1600);
     glutCreateWindow("Solid Sphere");
     xRotated = yRotated = zRotated = 30.0;
     xRotated=43;
