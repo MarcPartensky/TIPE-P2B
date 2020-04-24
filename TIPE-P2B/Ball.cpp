@@ -12,12 +12,12 @@
 
 
 
-Ball::Ball(glm::vec3 position, float radius, int stacks, int sectors) {
-    this->position = position;
-    this->radius = radius;
-    this->stacks = stacks;
-    this->sectors = sectors;
-}
+//Ball::Ball(glm::vec3 position, float radius, int stacks, int sectors) {
+//    this->position = position;
+//    this->radius = radius;
+//    this->stacks = stacks;
+//    this->sectors = sectors;
+//}
 
 void Ball::compute() {
     std::vector<float>().swap(vertices);

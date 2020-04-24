@@ -1,23 +1,23 @@
+////
+////  SimpleBall.cpp
+////  TIPE-P2B
+////
+////  Created by Marc Partensky on 05/04/2020.
+////  Copyright © 2020 Marc Partensky. All rights reserved.
+////
 //
-//  SimpleBall.cpp
-//  TIPE-P2B
+//#include "main.cpp"
+//#include "SimpleBall.hpp"
 //
-//  Created by Marc Partensky on 05/04/2020.
-//  Copyright © 2020 Marc Partensky. All rights reserved.
+//SimpleBall::SimpleBall(int radius, glm::mat3 motion) {
+//    this->radius = radius;
+//    this->motion = motion;
+//}
 //
-
-#include "main.cpp"
-#include "SimpleBall.hpp"
-
-SimpleBall::SimpleBall(int radius, glm::mat3 motion) {
-    this->radius = radius;
-    this->motion = motion;
-}
-
-SimpleBall::~SimpleBall() {}
-
-void SimpleBall::draw() {}
-
-
-
-
+//SimpleBall::~SimpleBall() {}
+//
+//void SimpleBall::draw() {}
+//
+//
+//
+//

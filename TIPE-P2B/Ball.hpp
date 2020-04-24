@@ -19,12 +19,12 @@
 
 struct Ball {
 public:
-    Ball(glm::vec3 position, float radius, int stacks, int sectors);
+//    Ball(glm::vec3 position, float radius, int stacks, int sectors);
     void compute(); // Compute the vertices
     void show(SceneOpenGL scene);
     ~Ball();
 protected:
-    glm::vec3 position;
+//    glm::vec3 position;
     float radius;
     int stacks;
     int sectors;
