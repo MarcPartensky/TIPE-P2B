@@ -281,8 +281,6 @@ void idleFunc(void)
     //             break;
     //     }
     // }
-
-
     redisplayFunc();
 }
 
