@@ -207,7 +207,6 @@ void redisplayFunc(void)
     // clear the identity matrix.
     glLoadIdentity();
     
-    
     glTranslatef(x, y, z);
     // Red color used to draw.
     glColor3f(0.8, 0.2, 0.1);
