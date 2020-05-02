@@ -92,7 +92,6 @@ const int n = 1000; // number of sand grains
 // #include "SandBox.hpp"
 
 
-
 //
 //GLfloat xRotated, yRotated, zRotated;
 //GLdouble radius=1;
