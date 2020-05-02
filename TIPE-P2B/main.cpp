@@ -75,10 +75,21 @@
 
 const int n = 1000; // number of sand grains
 
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#else
+#include <GL/gl.h>
+#endif
+
 // #include "SimpleBall.hpp"
 // #include "Sand.hpp"
 // #include "SandBox.hpp"
-
 
 
 
@@ -230,7 +241,6 @@ void idleFunc(void)
 {
 
     yRotated += 0.1;
-
     redisplayFunc();
 }
 
@@ -259,5 +269,6 @@ int main(int argc, char **argv)
 
     //Let start glut loop
     glutMainLoop();
+
     return 0;
 }
