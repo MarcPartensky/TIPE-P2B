@@ -90,6 +90,7 @@ const int n = 1000; // number of sand grains
 // #include "SimpleBall.hpp"
 // #include "Sand.hpp"
 // #include "SandBox.hpp"
+#include "SandGrain.hpp"
 
 
 //
