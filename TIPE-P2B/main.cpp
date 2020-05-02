@@ -75,6 +75,8 @@
 
 const int n = 1000; // number of sand grains
 
+double x=0, y=0, z=-10;
+
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -90,7 +92,7 @@ const int n = 1000; // number of sand grains
 // #include "SimpleBall.hpp"
 // #include "Sand.hpp"
 // #include "SandBox.hpp"
-#include "SandGrain.hpp"
+// #include "SandGrain.hpp"
 
 
 //
@@ -197,6 +199,7 @@ GLfloat xRotated, yRotated, zRotated;
 void redisplayFunc(void)
 {
 
+    // std::cout << "Ce code est exécuté" ;
 
     glMatrixMode(GL_MODELVIEW);
     // clear the drawing buffer.
@@ -205,7 +208,7 @@ void redisplayFunc(void)
     glLoadIdentity();
     
     
-    glTranslatef(0.0, 0.0, -10.0);
+    glTranslatef(x, y, z);
     // Red color used to draw.
     glColor3f(0.8, 0.2, 0.1);
     // changing in transformation matrix.
@@ -218,6 +221,7 @@ void redisplayFunc(void)
     // scaling transfomation
     glScalef(1.0, 1.0, 1.0);
     // built-in (glut library) function , draw you a sphere.
+    glutSolidSphere(2, 20, 50);
     glutSolidSphere(2, 20, 50);
     // Flush buffers to screen
 
@@ -241,7 +245,70 @@ void idleFunc(void)
 {
 
     yRotated += 0.1;
+    // std::cout << "idle";
+
+    // SDL_Event ev;
+    // while (SDL_WaitEventTimeout(&ev, 15)) {
+    //     std::cout << "inside";
+    //     switch (ev.type) {
+    //         case SDL_KEYDOWN:
+    //             std::cout << &ev.key << std::endl;
+    //             std::cout << ev.key.keysym.sym << std::endl;
+    //             switch (ev.key.keysym.sym) {
+    //                 case SDLK_LEFT:
+    //                     glTranslated(-1, 0, 0);
+    //                     break;
+    //                 case SDLK_RIGHT:
+    //                     glTranslated(1, 0, 0);
+    //                     break;
+    //                 case SDLK_UP:
+    //                     glTranslated(0, 0, 1);
+    //                     break;
+    //                 case SDLK_DOWN:
+    //                     glTranslated(0, 0, -1);
+    //                     break;
+    //                 case SDLK_ESCAPE:
+    //                     exit(0);
+    //                     break;
+    //                 default:
+    //                     std::cout << "default";
+    //                     break;
+    //             }
+    //             break;
+    //         case SDL_QUIT:
+    // //                open = false;
+    //             std::cout << "The program should end now." << std::endl;
+    //             break;
+    //     }
+    // }
+
+
     redisplayFunc();
+}
+
+// void glutKeyboardFunc(void (*func)(unsigned char key,
+                                //    int x, int y)) {
+
+                                //    }
+
+void keyboardFunc(unsigned char key, int ix, int iy) {
+    switch (key) {
+        case 'a':
+            x+=1;
+            break;
+        case 'd':
+            x-=1;
+            break;
+        case 'w':
+            z+=1;
+            break;
+        case 's':
+            z-=1;
+            break;
+        case 27: // escape => quit
+            exit(0);
+            break;
+    }
 }
 
 
@@ -265,6 +332,7 @@ int main(int argc, char **argv)
     glutDisplayFunc(redisplayFunc);
     glutReshapeFunc(reshapeFunc);
     glutIdleFunc(idleFunc);
+    glutKeyboardFunc(keyboardFunc);
     //init();
 
     //Let start glut loop
