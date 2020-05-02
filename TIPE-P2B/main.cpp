@@ -286,11 +286,6 @@ void idleFunc(void)
     redisplayFunc();
 }
 
-// void glutKeyboardFunc(void (*func)(unsigned char key,
-                                //    int x, int y)) {
-
-                                //    }
-
 void keyboardFunc(unsigned char key, int ix, int iy) {
     switch (key) {
         case 'a':
