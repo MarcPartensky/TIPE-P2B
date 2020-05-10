@@ -196,6 +196,11 @@ double x=0, y=0, z=-10;
 
 GLfloat xRotated, yRotated, zRotated;
 
+
+int mouseBuffer[2];
+// mouseBuffer[0] = 0;
+// mouseBuffer[1] = 0;
+
 void redisplayFunc(void)
 {
 
@@ -207,7 +212,6 @@ void redisplayFunc(void)
     // clear the identity matrix.
     glLoadIdentity();
     
-    glTranslatef(x, y, z);
     // Red color used to draw.
     glColor3f(0.8, 0.2, 0.1);
     // changing in transformation matrix.
@@ -220,9 +224,14 @@ void redisplayFunc(void)
     // scaling transfomation
     glScalef(1.0, 1.0, 1.0);
     // built-in (glut library) function , draw you a sphere.
+
+    // glTranslatef(5,0,0);
     glutSolidSphere(2, 20, 50);
-    glutSolidSphere(2, 20, 50);
+    // glTranslatef(-10,0,0);
+    // glutSolidSphere(2, 20, 50);
+    // glTranslatef(5,0,0);
     // Flush buffers to screen
+    
 
     glFlush();
     
@@ -234,53 +243,32 @@ void reshapeFunc(int x, int y)
     //Set a new projection matrix
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-
-    gluPerspective(40.0, (GLdouble)x / (GLdouble)y, 0.5, 20.0);
+    glTranslatef(x, y, z);
+    gluPerspective(40.0, (GLdouble)x / (GLdouble)y, 0.5f, 1000.0f);
     glMatrixMode(GL_MODELVIEW);
     glViewport(0, 0, x, y);  //Use the whole window for rendering
 }
 
 void idleFunc(void)
 {
-
     yRotated += 0.1;
-    // std::cout << "idle";
-
-    // SDL_Event ev;
-    // while (SDL_WaitEventTimeout(&ev, 15)) {
-    //     std::cout << "inside";
-    //     switch (ev.type) {
-    //         case SDL_KEYDOWN:
-    //             std::cout << &ev.key << std::endl;
-    //             std::cout << ev.key.keysym.sym << std::endl;
-    //             switch (ev.key.keysym.sym) {
-    //                 case SDLK_LEFT:
-    //                     glTranslated(-1, 0, 0);
-    //                     break;
-    //                 case SDLK_RIGHT:
-    //                     glTranslated(1, 0, 0);
-    //                     break;
-    //                 case SDLK_UP:
-    //                     glTranslated(0, 0, 1);
-    //                     break;
-    //                 case SDLK_DOWN:
-    //                     glTranslated(0, 0, -1);
-    //                     break;
-    //                 case SDLK_ESCAPE:
-    //                     exit(0);
-    //                     break;
-    //                 default:
-    //                     std::cout << "default";
-    //                     break;
-    //             }
-    //             break;
-    //         case SDL_QUIT:
-    // //                open = false;
-    //             std::cout << "The program should end now." << std::endl;
-    //             break;
-    //     }
-    // }
     redisplayFunc();
+}
+
+void mouseFunc(int button, int state, int x, int y) {
+    std::cout << "mouseFunc: " << button << ',' << state << ',' << x << ',' << y << std::endl;
+}
+
+void motionFunc(int x, int y) {
+    std::cout << "motionFunc: " << x << ',' << y << std::endl;
+}
+
+void passiveMotionFunc(int x, int y) {
+    std::cout << "passiveMotionFunc: " << x << ',' << y << std::endl;
+    ax = mouseBuffer[0] - x
+    ay = mouse
+    mouseBuffer[0] = x;
+    mouseBuffer[1] = y;
 }
 
 void keyboardFunc(unsigned char key, int ix, int iy) {
@@ -301,7 +289,9 @@ void keyboardFunc(unsigned char key, int ix, int iy) {
             exit(0);
             break;
     }
+    std::cout << '(' << x << ',' << y << ',' << z << ')' << std::endl;
 }
+
 
 
 int main(int argc, char **argv)
@@ -325,8 +315,9 @@ int main(int argc, char **argv)
     glutReshapeFunc(reshapeFunc);
     glutIdleFunc(idleFunc);
     glutKeyboardFunc(keyboardFunc);
-    //init();
-
+    glutMouseFunc(mouseFunc);
+    glutMotionFunc(motionFunc);
+    glutPassiveMotionFunc(passiveMotionFunc);
     //Let start glut loop
     glutMainLoop();
 
