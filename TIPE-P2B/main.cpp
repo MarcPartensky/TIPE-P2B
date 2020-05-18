@@ -70,12 +70,8 @@
 #include <iostream>
 #include <GLUT/glut.h>
 //  #include <SDL.h>
-#include "SDL2/SDL.h"
-//#include <glm/glm.hpp>
-
-const int n = 1000; // number of sand grains
-
-double x=0, y=0, z=-10;
+// #include "SDL2/SDL.h"
+#include <glm/glm.hpp>
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -83,167 +79,129 @@ double x=0, y=0, z=-10;
 #include <GL/glut.h>
 #endif
 
-#ifdef __APPLE__
-#include <OpenGL/gl.h>
-#else
-#include <GL/gl.h>
-#endif
+#define SPACEBAR 32
+
+// #ifdef __APPLE__
+// #include <OpenGL/gl.h>
+// #else
+// #include <GL/gl.h>
+// #endif
 
 // #include "SimpleBall.hpp"
 // #include "Sand.hpp"
 // #include "SandBox.hpp"
 // #include "SandGrain.hpp"
+#include "Camera.hpp"
 
+#include <stdlib.h> // for rand
 
-//
-//GLfloat xRotated, yRotated, zRotated;
-//GLdouble radius=1;
-//
-//void display(void);
-//void reshape(int x, int y);
-//
-//
-//int main (int argc, char **argv)
-//{
-//    glutInit(&argc, argv);
-//    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-//    glutInitWindowSize(2560,1600);
-//    glutCreateWindow("Solid Sphere");
-//    xRotated = yRotated = zRotated = 30.0;
-//    xRotated=43;
-//    yRotated=50;
-//    std::cout << "test" << std::endl;
-//
-//    glutDisplayFunc(display);
-//    glutReshapeFunc(reshape);
-//
-//    glutMainLoop();
-//    return 0;
-//}
-//
-//void display(void)
-//{
-//
-//    glMatrixMode(GL_MODELVIEW);
-//    // clear the drawing buffer.
-//    glClear(GL_COLOR_BUFFER_BIT);
-//    // clear the identity matrix.
-//    glLoadIdentity();
-//    // traslate the draw by z = -4.0
-//    // Note this when you decrease z like -8.0 the drawing will looks far , or smaller.
-////    glTranslatef(0.0,1,-5.0);
-//    // Red color used to draw.
-//    glColor3f(0.9, 0.3, 0.2);
-//    // changing in transformation matrix.
-//    // rotation about X axis
-//    glRotatef(xRotated,1.0,0.0,0.0);
-//    // rotation about Y axis
-//    glRotatef(yRotated,0.0,1.0,0.0);
-//    // rotation about Z axis
-//    glRotatef(zRotated,0.0,0.0,1.0);
-//    // scaling transfomation
-//    glScalef(1.0,1.0,1.0);
-//    // built-in (glut library) function , draw you a sphere.
-//    glutWireSphere(radius,20,20);
-////    glutSolidSphere(radius, 20, 20);
-//    // Flush buffers to screen
-//
-//    glFlush();
-//    // sawp buffers called because we are using double buffering
-//   // glutSwapBuffers();
-//}
-//
-//void reshape(int x, int y)
-//{
-//    if (y == 0 || x == 0) return;
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
-//    gluPerspective(39.0,(GLdouble)x/(GLdouble)y,0.6,21.0);
-//    glMatrixMode(GL_MODELVIEW);
-//    glViewport(0,0,x,y);  //Use the whole window for rendering
-//
-//    SDL_Event ev;
-//    while (SDL_WaitEventTimeout(&ev, 15)) {
-//        switch (ev.type) {
-//            case SDL_KEYDOWN:
-////                    std::cout << &ev.key << std::endl;
-//                std::cout << ev.key.keysym.sym << std::endl;
-//                switch (ev.key.keysym.sym) {
-//                    case SDLK_LEFT:
-//                        glTranslated(-1, 0, 0);
-//                        break;
-//                    case SDLK_RIGHT:
-//                        glTranslated(1, 0, 0);
-//                        break;
-//                    case SDLK_UP:
-//                        glTranslated(0, 0, 1);
-//                        break;
-//                    case SDLK_DOWN:
-//                        glTranslated(0, 0, -1);
-//                        break;
-//                    default:
-//                        break;
-//                }
-//                break;
-//            case SDL_QUIT:
-////                open = false;
-//                std::cout << "The program should end now." << std::endl;
-//                break;
-//        }
-//    }
-//}
+const int n = 1000; // number of sand grains
 
+// GLfloat xRotated, yRotated, zRotated;
 
-GLfloat xRotated, yRotated, zRotated;
+GLfloat cameraRotation[3];
+GLfloat cameraPosition[3];
 
+Camera camera;
 
-int mouseBuffer[2];
-// mouseBuffer[0] = 0;
-// mouseBuffer[1] = 0;
+int mouse[2];
 
-void redisplayFunc(void)
+GLfloat mat_ambient_color[] = { 0.7f, 0.7f, 0.7f, 1.0f };
+
+// glm::vec3 eye(0.0f, 0.0f, 1.0f);
+// glm::vec3 center(0.0f, 0.0f, 0.0f);
+// glm::vec3 up(0.0f, 1.0f, 0.0f);
+// Camera camera(eye, center, up);
+
+static void display()
 {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glColor3f(1.0f, 1.0f, 0.0f);
+    glutSolidSphere(0.5f, 50, 60);
+    glutSwapBuffers();
+}
 
-    // std::cout << "Ce code est exécuté" ;
-
+static void displayFunc(void)
+{
     glMatrixMode(GL_MODELVIEW);
     // clear the drawing buffer.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // clear the identity matrix.
     glLoadIdentity();
     
-    // Red color used to draw.
-    glColor3f(0.8, 0.2, 0.1);
     // changing in transformation matrix.
     // rotation about X axis
-    glRotatef(xRotated, 50.0, 50.0, 0.0);
+    
+    // glRotatef(ax, 0, 0, 0.0);
     // rotation about Y axis
-    glRotatef(yRotated, 0.0, 0.0, 0.0);
+    // glRotatef(ay, 0.0, 0.0, 0.0);
     // rotation about Z axis
-    glRotatef(zRotated, 0.0, 0.0, 0.0);
+    // glRotatef(az, 0.0, 0.0, 0.0);
     // scaling transfomation
-    glScalef(1.0, 1.0, 1.0);
+    // glScalef(1.0, 1.0, 1.0);
     // built-in (glut library) function , draw you a sphere.
 
-    // glTranslatef(5,0,0);
-    glutSolidSphere(2, 20, 50);
-    // glTranslatef(-10,0,0);
-    // glutSolidSphere(2, 20, 50);
-    // glTranslatef(5,0,0);
-    // Flush buffers to screen
-    
+    // glLoadIdentity();
+    // float x = camera.center.x;
+    // float y = camera.center.y;
+    // float z = camera.center.z;
+    glTranslatef(camera.center.x,camera.center.y,camera.center.z);
 
+    glColor3f(1.0f, 1.0f, 0.0f);
+    glutSolidSphere(0.5f, 50, 60);
+
+    int s = 200;
+    glColor3f(0, 0, 0);
+    glutSolidCube(s);
+
+    int n = 6;
+    int p = 5;
+    for (int x=-n; x<=n; x++) {
+        for (int z=-n; z<=n; z++) {
+            for (int y=-n; y<=n; y++) {
+                float r = float(rand())/RAND_MAX/2+0.5;
+                glColor3f(r, r, 0);
+                glPushMatrix();
+                glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+                glTranslatef(p*x, p*y , p*z);
+                glutSolidSphere(2.0, 20, 20);
+                // glTranslatef(-p*x, -p*y , -p*z);
+                glPopMatrix();
+            }
+        }    
+    }
+
+
+
+    // gluLookAt(
+    //     camera.eye.x,
+    //     camera.eye.y,
+    //     camera.eye.z,
+    //     camera.center.x,
+    //     camera.center.y,
+    //     camera.center.z,
+    //     camera.up.x,
+    //     camera.up.y,
+    //     camera.up.z
+    // );
+    
+    // glutSwapBuffers();
     glFlush();
     
 }
 
 void reshapeFunc(int x, int y)
 {
-    //if (y == 0 || x == 0) return;  //Nothing is visible then, so return
+    // Used when the window is reshaped
+    if (y == 0 || x == 0) return;  //Nothing is visible then, so return
     //Set a new projection matrix
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glTranslatef(x, y, z);
+    glEnable(GL_DEPTH_TEST);
+    std::cout << "reshaping" << std::endl;
+    std::cout << x << y << std::endl;
+    camera.center[2] = -10; // Initial position in the scene
+    // glTranslatef(camera.center.x, camera.center.y, camera.center.z);
     gluPerspective(40.0, (GLdouble)x / (GLdouble)y, 0.5f, 1000.0f);
     glMatrixMode(GL_MODELVIEW);
     glViewport(0, 0, x, y);  //Use the whole window for rendering
@@ -251,45 +209,53 @@ void reshapeFunc(int x, int y)
 
 void idleFunc(void)
 {
-    yRotated += 0.1;
-    redisplayFunc();
+    // yRotated += 0.1;
+    displayFunc();
 }
 
 void mouseFunc(int button, int state, int x, int y) {
-    std::cout << "mouseFunc: " << button << ',' << state << ',' << x << ',' << y << std::endl;
+    // std::cout << "mouseFunc: " << button << ',' << state << ',' << x << ',' << y << std::endl;
 }
 
 void motionFunc(int x, int y) {
-    std::cout << "motionFunc: " << x << ',' << y << std::endl;
+    // std::cout << "motionFunc: " << x << ',' << y << std::endl;
 }
 
 void passiveMotionFunc(int x, int y) {
-    std::cout << "passiveMotionFunc: " << x << ',' << y << std::endl;
-    ax = mouseBuffer[0] - x
-    ay = mouse
-    mouseBuffer[0] = x;
-    mouseBuffer[1] = y;
+    // std::cout << "passiveMotionFunc: " << x << ',' << y << std::endl;
+    // cameraRotation[0] += cos(mouse[0] - x);
+    // cameraRotation[1] += mouse[1] - y;
+    mouse[0] = x;
+    mouse[1] = y;
 }
 
 void keyboardFunc(unsigned char key, int ix, int iy) {
+    std::cout << key << std::endl;
     switch (key) {
         case 'a':
-            x+=1;
+            camera.center.x+=1;
             break;
         case 'd':
-            x-=1;
+            camera.center.x-=1;
             break;
         case 'w':
-            z+=1;
+            camera.center.z+=1;
             break;
         case 's':
-            z-=1;
+            camera.center.z-=1;
+            break;
+        case SPACEBAR:
+            std::cout << "spacebar rn" << std::endl;
+            camera.center.y-=1;
+            break;
+        case 'z':
+            camera.center.y+=1;
             break;
         case 27: // escape => quit
             exit(0);
             break;
     }
-    std::cout << '(' << x << ',' << y << ',' << z << ')' << std::endl;
+    // std::cout << '(' << camera.center.x << ',' << camera.center.y << ',' << camera.center.z << ')' << std::endl;
 }
 
 
@@ -299,19 +265,27 @@ int main(int argc, char **argv)
     //Initialize GLUT
     glutInit(&argc, argv);
     //double buffering used to avoid flickering problem in animation
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    // glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     // window size
     glutInitWindowSize(2560, 1600);
     // create the window
     glutCreateWindow("Sphere Rotating Animation");
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    xRotated = yRotated = zRotated = 30.0;
-    xRotated = 33;
-    yRotated = 40;
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    // cameraRotation[0] = 0;
+    // cameraRotation[1] = 0;
+    // cameraRotation[2] = 0;
+
+    // glm::vec3 eye(0.0f, 0.0f, 1.0f);
+    // glm::vec3 center(0.0f, 0.0f, 0.0f);
+    // glm::vec3 up(0.0f, 1.0f, 0.0f);
+    // Camera camera(eye, center, up);
+
+    glClearColor(1.0, 1.0, 1.0, 0.0);
     //Assign  the function used in events
-    glutDisplayFunc(redisplayFunc);
+    glutDisplayFunc(display);
     glutReshapeFunc(reshapeFunc);
     glutIdleFunc(idleFunc);
     glutKeyboardFunc(keyboardFunc);
