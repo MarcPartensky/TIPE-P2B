@@ -6,7 +6,12 @@
 //  Copyright © 2019 Marc Partensky. All rights reserved.
 //
 
-#define GL_SILENCE_DEPRECATION // to silence warnings
+#define GL_SILENCE_DEPRECATION
+// To silence warnings for apple deprecation
+// indeed apple wants its users to use its new
+// library called Metal instead of OpenGL
+// However Metal is only compatible for 
+// apple devices which does not suit our needs.
 
 #ifdef __APPLE__ // for compatibility with apple when including GLUT
 #include <GLUT/glut.h>
