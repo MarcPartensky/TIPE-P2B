@@ -17,17 +17,18 @@
 //     init();
 // }
 
-
 SandBox::SandBox() {
     init();
 }
 
 void SandBox::init() {
-    dt = 0.001;
+    dt = 0.02;
     g = 100;
     m = 10;
-    pd = 0.3;
-    vd = 0.8;
+    // pd = 0.3;
+    // vd = 0.8;
+    pd = 1;
+    vd = 1;
     ad = 0.9;
     sand_friction = 0.1;
     cube_size = 100;
@@ -38,6 +39,7 @@ void SandBox::init() {
     sectors = 20;
     zone = 10;
     turns = 0;
+    wind_noise = 0.00;
     initial_position_noise = 0.1;
     fillZeroPush();
     fillRandomColors();
@@ -48,7 +50,6 @@ void SandBox::init() {
 
 SandBox::~SandBox() {}
 
-
 void SandBox::updateUpdateMatrix(void) {
     updateMatrix[0][0] = updateMatrix[1][1] = updateMatrix[2][2] = 1.f;
     updateMatrix[0][1] = updateMatrix[1][2] = dt;
@@ -56,7 +57,6 @@ void SandBox::updateUpdateMatrix(void) {
     updateMatrix[1][0] = 0.0f;
     updateMatrix[2][0] = updateMatrix[2][1] = 0.0f;
 }
-
 
 void SandBox::update(void) {
     resetAccelerations();
@@ -94,11 +94,11 @@ void SandBox::applyCollisions(void) {
             if (dist<2*radius) {
                 v = p2-p1;
                 nv = glm::normalize(v);
-                v = (1-ad)*nv;
+                v = nv;
                 push[i] -= (2*radius-dist)/2*nv;
                 push[j] += (2*radius-dist)/2*nv;
-                matrices[i][2] -= 2*m/dt*v;
-                matrices[j][2] += 2*m/dt*v;
+                matrices[i][2] -= 2*m/dt*(1-ad)*v;
+                matrices[j][2] += 2*m/dt*(1-ad)*v;
                 matrices[i][1] *= (1-fv);
                 matrices[j][1] *= (1-fv);
             }
@@ -114,26 +114,11 @@ void SandBox::applyWindNoise(void) {
     }
 }
 
-// printMatrix(matrices[i]);
-// printVector(v);
-// std::cout << p2[0] << "-" << p1[0] << "=" << v[0] << std::endl;
-// pv1 = matrices[i][1]*v;
-// pv2 = matrices[j][1]*v;
-// std::cout << matrices[i][1][0] << "*" << v[0] << "=" << pv1[0] << std::endl;
-// pv1 = glm::gtx::component_wise::compMul({matrices[i][1], v});
-// pv2 = glm::gtx::component_wise::compMul({matrices[j][1], v});
-// n1 = 2*m/dt*pv1;
-// std::cout << n1[0] << " et " << 2*m/dt << " et " << pv1[0] << std::endl;
-
-
-
-
 void SandBox::updateMatrices(void) {
     for(auto & matrix : matrices) {
         matrix = matrix * updateMatrix;
     }
 }
-
 
 void SandBox::updatePush(void) {
     for(int i=0; i<n; i++) {
@@ -171,7 +156,6 @@ void SandBox::show(void) {
             0
         );
         glPushMatrix();
-        // glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
         glTranslatef(
             matrices[i][0][0],
             matrices[i][0][1], 
@@ -193,7 +177,6 @@ void SandBox::fillRandomColors(void) {
         color = (float(rand())/RAND_MAX+1)/2;
     }
 }
-
 
 // void SandBox::fillMatrices(void) {
 //     for (int i=0; i<n; i++) {

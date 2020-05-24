@@ -8,7 +8,6 @@
 
 #include "Camera.hpp"
 
-// Camera::Camera(): eye(0.0f, 0.0f, 1.0f), center(0.0f, 0.0f, 0.0f), up(0.0f, 1.0f, 0.0f) {}
 Camera::Camera() {
     this->eye = glm::vec3(0, 0, 0);
     this->center = glm::vec3(0, 0, 1);

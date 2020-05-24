@@ -10,19 +10,13 @@
 #define Camera_hpp
 
 #include <stdio.h>
-// #include "glm/glm.hpp"
 
 struct Camera {
-    // Camera for glutLookAt
 public:
     Camera();
     Camera(glm::vec3 eye, glm::vec3 center, glm::vec3 up);
     void look(void);
     ~Camera();
-// protected:
-    // float eye[3];
-    // float center[3];
-    // float up[3];
     glm::vec3 eye;
     glm::vec3 center;
     glm::vec3 up;

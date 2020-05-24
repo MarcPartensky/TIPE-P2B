@@ -21,7 +21,6 @@ Board::Board(void) {
     angle = 70;
     size = 100;
     damping = 0.7;
-
 }
 
 Board::~Board() {}

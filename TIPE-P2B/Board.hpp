@@ -1,5 +1,5 @@
 //
-//  SandBox.hpp
+//  Board.hpp
 //  TIPE-P2B
 //
 //  Created by Marc Partensky on 17/12/2019.

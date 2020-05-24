@@ -18,7 +18,7 @@
 
 #define SPACEBAR 32 // for spacebar detection
 
-const int n = 2000; // number of sand grains
+const int n = 1000; // number of sand grains
 bool showCout = false; // showing cout or not
 
 #include <iostream> // for std
@@ -43,7 +43,6 @@ Board board;
 
 int mouse[2];
 
-GLfloat mat_ambient_color[] = { 0.7f, 0.7f, 0.7f, 1.0f };
 
 static void display()
 {
@@ -60,7 +59,7 @@ static void displayFunc(void)
     glLoadIdentity();
     camera.look();
     sandBox.show();
-    board.show();
+    // board.show();
     glFlush();
 }
 
@@ -83,7 +82,7 @@ void idleFunc(void)
 {
     displayFunc();
     sandBox.update();
-    board.collideWithSand(sandBox);
+    // board.collideWithSand(sandBox);
 }
 
 void mouseFunc(int button, int state, int x, int y) {
