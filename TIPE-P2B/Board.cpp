@@ -56,15 +56,8 @@ void Board::collideWithSand(SandBox &sandBox) {
             }
             sandBox.matrices[i][0] -= (h-hb/2-sandBox.radius)*normal;
             sandBox.matrices[i][1] *= (1-damping);
-            // v = base * sandBox.matrices[i][1];
-            // v[1] *= -1;
-            // sandBox.matrices[i][1] = inv_base * v;
-            // sandBox.matrices[i][1][0] = 0;
-            // sandBox.matrices[i][1][1] = 0;
-            // sandBox.matrices[i][1][2] = 0;
         }
     }
-
 }
 
 void Board::show(void) {

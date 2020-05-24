@@ -25,10 +25,8 @@ void SandBox::init() {
     dt = 0.02;
     g = 100;
     m = 10;
-    // pd = 0.3;
-    // vd = 0.8;
-    pd = 1;
-    vd = 1;
+    pd = 0.3;
+    vd = 0.8;
     ad = 0.9;
     sand_friction = 0.1;
     cube_size = 100;

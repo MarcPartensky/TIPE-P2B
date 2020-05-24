@@ -8,7 +8,7 @@
 
 #define GL_SILENCE_DEPRECATION // to silence warnings
 
-#ifdef __APPLE__ // for compatibility
+#ifdef __APPLE__ // for compatibility with apple when including GLUT
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
@@ -18,8 +18,8 @@
 
 #define SPACEBAR 32 // for spacebar detection
 
-const int n = 1000; // number of sand grains
-bool showCout = false; // showing cout or not
+const int n = 2000; // number of sand grains
+bool showCout = false; // showing cout or not (useful when debugging)
 
 #include <iostream> // for std
 #include <stdlib.h> // for random
@@ -32,8 +32,6 @@ bool showCout = false; // showing cout or not
 #include "Camera.cpp" // for camera
 #include "Board.cpp" // for board
 
-
-
 GLfloat cameraRotation[3];
 GLfloat cameraPosition[3];
 
@@ -42,7 +40,6 @@ SandBox sandBox;
 Board board;
 
 int mouse[2];
-
 
 static void display()
 {
@@ -59,8 +56,15 @@ static void displayFunc(void)
     glLoadIdentity();
     camera.look();
     sandBox.show();
-    // board.show();
+    board.show();
     glFlush();
+}
+
+void idleFunc(void)
+{
+    displayFunc();
+    sandBox.update();
+    board.collideWithSand(sandBox);
 }
 
 void reshapeFunc(int x, int y)
@@ -78,13 +82,6 @@ void reshapeFunc(int x, int y)
     glViewport(0, 0, x, y);  //Use the whole window for rendering
 }
 
-void idleFunc(void)
-{
-    displayFunc();
-    sandBox.update();
-    // board.collideWithSand(sandBox);
-}
-
 void mouseFunc(int button, int state, int x, int y) {
     // std::cout << "mouseFunc: " << button << ',' << state << ',' << x << ',' << y << std::endl;
 }
@@ -95,8 +92,6 @@ void motionFunc(int x, int y) {
 
 void passiveMotionFunc(int x, int y) {
     // std::cout << "passiveMotionFunc: " << x << ',' << y << std::endl;
-    // cameraRotation[0] += cos(mouse[0] - x);
-    // cameraRotation[1] += mouse[1] - y;
     mouse[0] = x;
     mouse[1] = y;
 }
@@ -147,12 +142,9 @@ void keyboardFunc(unsigned char key, int ix, int iy) {
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
-    //double buffering used to avoid flickering problem in animation
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
-    // glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize(2560, 1600);
     glutCreateWindow("Sphere Rotating Animation");
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     glClearColor(0.5, 0.7, 1.0, 0.0);
