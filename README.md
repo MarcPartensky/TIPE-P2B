@@ -5,7 +5,8 @@ Modélisation physique de l'écoulement granulaire dans le cadre du Travail d'In
 Marc Partensky, Valentin Colin
 
 # Démonstration
-[demo](gif/simulation-finale.gif)
+[![Fourier Demonstration](gif/simulation-finale.gif)](https://www.youtube.com/watch?v=86bYtJCwQ_o)
+
 <!--[](ytb-link)-->
 
 # Description
