@@ -5,7 +5,7 @@ Modélisation physique de l'écoulement granulaire dans le cadre du Travail d'In
 Marc Partensky, Valentin Colin
 
 # Démonstration
-[[demo](gif-link)](ytb-link)
+[[demo](gif/simulation-finale.gif)](ytb-link)
 
 # Description
 Ce projet porte sur l'étude de l'écoulement de grains de sables
