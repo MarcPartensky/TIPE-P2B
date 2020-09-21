@@ -1,11 +1,11 @@
-# TIPE-P2B
-Travail d'Initiative Personnelle Encadré:
-
 # Sujet
-Écoulement de Sable
+Modélisation physique de l'écoulement granulaire dans le cadre du Travail d'Initiative Personnelle Encadré.
 
 # Auteurs
 Marc Partensky, Valentin Colin
+
+# Démonstration
+[[demo](gif-link)](ytb-link)
 
 # Description
 Ce projet porte sur l'étude de l'écoulement de grains de sables
